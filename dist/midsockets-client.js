@@ -179,15 +179,16 @@ Utils.logger = function(code){
   if (!code) { code = '90'; }
   return function(){
     process.stdout.write("\x1b["+code+"m");
-    console.log.apply(null,arguments);
+    if (window.console) { console.log.apply(null,arguments); }
     process.stdout.write("\x1b[0m");
   };
 };
 
+var console = (window.console && window.console.log) ? console.log : function() { };
 Utils.log = 
   (process.stdout) ? 
     Utils.logger()
-  : console.log;
+  : console;
 
 })(require("__browserify_process"))
 },{"__browserify_process":7}],4:[function(require,module,exports){var inheritance = require('./inheritance');
