@@ -184,11 +184,11 @@ Utils.logger = function(code){
   };
 };
 
-var console = (window.console && window.console.log) ? console.log : function() { };
+var consoleLog = (window.console && window.console.log) ? window.console.log : function() { };
 Utils.log = 
   (process.stdout) ? 
     Utils.logger()
-  : console;
+  : consoleLog;
 
 })(require("__browserify_process"))
 },{"__browserify_process":7}],4:[function(require,module,exports){var inheritance = require('./inheritance');
